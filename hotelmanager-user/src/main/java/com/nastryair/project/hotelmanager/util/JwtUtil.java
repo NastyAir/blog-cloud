@@ -42,7 +42,7 @@ public class JwtUtil {
     /**
      * JWT 添加至HTTP HEAD中的前缀
      */
-    private static final String JWT_SEPARATOR = "Bearer ";
+    public static final String JWT_SEPARATOR = "Bearer ";
 
     /**
      * 使用JWT默认方式，生成加解密密钥

@@ -7,8 +7,12 @@ import com.nastryair.project.hotelmanager.entity.User;
 import com.nastryair.project.hotelmanager.respository.UserRepository;
 import com.nastryair.project.hotelmanager.util.JwtUtil;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Service
 public class AccountService {
@@ -21,20 +25,26 @@ public class AccountService {
     }
 
     public RestMessage login(String userName, String password, boolean rememberMe) {
-        RestMessage restMessage = new RestMessage();
+        RestMessage message = new RestMessage();
         User user = userRepository.findByName(userName);
         if (user == null) {
-            throw new BusinessException(CodeConstant.TARGET_NOT_FIND.getCode(), "用户不存在");
+            throw new BusinessException(CodeConstant.RECORD_NOT_FOUND.getCode(), "用户不存在");
         }
         if (StringUtils.equals(user.getPassword(), password)) {
-            JwtUtil.buildJWT(user.getUserId());
-            restMessage.setCode(CodeConstant.SUCCESS.getCode());
-            restMessage.setMsg("用户登陆成功");
-
-        }else {
-            restMessage.setCode(CodeConstant.FAIL.getCode());
-            restMessage.setMsg("密码错误");
+            String token = JwtUtil.buildJWT(user.getUserId());
+            User returnUser = new User();
+            BeanUtils.copyProperties(user, returnUser);
+            returnUser.setPassword(null);
+            Map<String, Object> dataMap = new HashMap<>();
+            dataMap.put("token", token);
+            dataMap.put("user", returnUser);
+            message.setCode(CodeConstant.SUCCESS.getCode());
+            message.setMsg("用户登陆成功");
+            message.setData(dataMap);
+        } else {
+            message.setCode(CodeConstant.FAIL.getCode());
+            message.setMsg("密码错误");
         }
-        return restMessage;
+        return message;
     }
 }

@@ -2,6 +2,7 @@ package com.nastryair.project.hotelmanager.util;
 
 import com.nastryair.project.hotelmanager.common.RestMessage;
 import com.nastryair.project.hotelmanager.common.contant.CodeConstant;
+import org.springframework.http.ResponseEntity;
 
 public class RestMessageUtil {
     public static RestMessage success(Object object) {
@@ -24,5 +25,19 @@ public class RestMessageUtil {
         result.setCode(code);
         result.setMsg(msg);
         return result;
+    }
+
+    public static RestMessage from(ResponseEntity<RestMessage> responseMessage) {
+        RestMessage msg = new RestMessage();
+        msg.setCode(responseMessage.getBody().getCode());
+        if (responseMessage.getBody().getMsg() != null) {
+            msg.setMsg(responseMessage.getBody().getMsg());
+        }
+
+        if (responseMessage.getBody().getData() != null) {
+            msg.setData(responseMessage.getBody().getData());
+        }
+
+        return msg;
     }
 }
