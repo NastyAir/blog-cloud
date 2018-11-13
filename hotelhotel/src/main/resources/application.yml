@@ -1,0 +1,39 @@
+# Server Setting
+server:
+  address: 0.0.0.0
+  port: 8013
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  #MySql
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    #    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.31.60:3306/hotel?characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8
+    username: root
+    password: 123456
+  #    initialize: true
+
+  jpa:
+    database: MYSQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      # possible values: validate | update | create | create-drop
+      naming-strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+
+#security:
+#  basic:
+#    enabled: false
+
+#log
+logging:
+  level:
+    org.springframework:
+      web: info
+#      security: DEBUG
+#      hibernate: DEBUG
