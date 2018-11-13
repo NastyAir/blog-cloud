@@ -6,7 +6,7 @@ import com.nastryair.project.hotelmanager.common.config.UserCenterConf;
 import com.nastryair.project.hotelmanager.common.contant.CodeConstant;
 import com.nastryair.project.hotelmanager.dto.MessageDto;
 import com.nastryair.project.hotelmanager.entity.MessageEntity;
-import com.nastryair.project.hotelmanager.respository.MessageRepository;
+import com.nastryair.project.hotelmanager.repository.MessageRepository;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.slf4j.Logger;

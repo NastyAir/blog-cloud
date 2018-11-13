@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.nastryair.project.hotelmanager.common.RestMessage;
 import com.nastryair.project.hotelmanager.common.contant.CodeConstant;
 import com.nastryair.project.hotelmanager.entity.Permission;
-import com.nastryair.project.hotelmanager.respository.PermissionRepository;
+import com.nastryair.project.hotelmanager.repository.PermissionRepository;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.slf4j.Logger;

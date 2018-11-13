@@ -9,7 +9,7 @@ import com.nastryair.project.hotelmanager.common.contant.MessageTypeConstant;
 import com.nastryair.project.hotelmanager.dto.UserPasswordDto;
 import com.nastryair.project.hotelmanager.dto.UserRoleDto;
 import com.nastryair.project.hotelmanager.entity.*;
-import com.nastryair.project.hotelmanager.respository.*;
+import com.nastryair.project.hotelmanager.repository.*;
 import com.nastryair.project.hotelmanager.util.ExceptionUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.exception.ExceptionUtils;

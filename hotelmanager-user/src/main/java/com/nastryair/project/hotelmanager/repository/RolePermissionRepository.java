@@ -1,4 +1,4 @@
-package com.nastryair.project.hotelmanager.respository;
+package com.nastryair.project.hotelmanager.repository;
 
 import com.nastryair.project.hotelmanager.entity.RolePermission;
 import org.springframework.data.repository.PagingAndSortingRepository;

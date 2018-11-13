@@ -1,6 +1,7 @@
 package com.nastryair.project.hotelmanager.common.swagger;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -8,6 +9,7 @@ import springfox.documentation.service.ApiInfo;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 
+@Configuration
 public class swaggerConfig {
     @Bean
     public Docket createRestApi() {
@@ -21,7 +23,7 @@ public class swaggerConfig {
 
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
-                .title("酒店管理相同api")
+                .title("酒店系统api")
                 .description("用户模块api")
 //                .termsOfServiceUrl("")
                 .version("1.0")

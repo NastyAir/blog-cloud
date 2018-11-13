@@ -4,7 +4,7 @@ import com.nastryair.project.hotelmanager.common.RestMessage;
 import com.nastryair.project.hotelmanager.common.contant.CodeConstant;
 import com.nastryair.project.hotelmanager.common.exception.BusinessException;
 import com.nastryair.project.hotelmanager.entity.User;
-import com.nastryair.project.hotelmanager.respository.UserRepository;
+import com.nastryair.project.hotelmanager.repository.UserRepository;
 import com.nastryair.project.hotelmanager.util.JwtUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
