@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import java.util.Properties;
 
 public class HotelConf {
-    public final static String MODULE_NAME = "user-center";
+    public final static String MODULE_NAME = "hotel";
     private static final Logger LOGGER = LoggerFactory.getLogger(HotelConf.MODULE_NAME);
 
     public static String blankPageUrl;
