@@ -4,7 +4,7 @@ import com.nastryair.project.hotelmanager.hotel.entity.Hotel;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
 
-@Api(value = "酒店相关接口", tags = "酒店", description = "酒店相关接口")
+@Api(value = "hotel api", tags = "hotel", description = "酒店相关接口")
 public interface HotelApi {
 
     @ApiOperation(value = "获取酒店列表", notes = "获取酒店分页列表")
