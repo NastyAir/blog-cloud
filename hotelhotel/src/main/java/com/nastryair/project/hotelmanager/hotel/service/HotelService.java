@@ -79,22 +79,19 @@ public class HotelService {
 
     public RestMessage add(Hotel hotel) {
         RestMessage message = new RestMessage();
-        try {
-            Hotel sameHotel = hotelRepository.findByName(hotel.getName());
-            if (sameHotel == null) {
-                hotel.setHotelId(UUID.randomUUID().toString());
-                hotel.setStatus("enable");
+
+        Hotel sameHotel = hotelRepository.findByName(hotel.getName());
+        if (sameHotel == null) {
+            hotel.setHotelId(UUID.randomUUID().toString());
+            hotel.setStatus("enable");
 //                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 //                hotel.setCreateDate(new Date());
-                message.setData(hotelRepository.save(hotel));
-                message.setCode(CodeConstant.SUCCESS.getCode());
-            } else {
-                message.setCode(CodeConstant.RECORD_ALREADY_EXISTS.getCode());
-            }
-        } catch (Exception e) {
-            LOGGER.error(ExceptionUtil.getStackInfo(e));
-            message.setCode(CodeConstant.FAIL.getCode());
+            message.setData(hotelRepository.save(hotel));
+            message.setCode(CodeConstant.SUCCESS.getCode());
+        } else {
+            message.setCode(CodeConstant.RECORD_ALREADY_EXISTS.getCode());
         }
+
         return message;
     }
 }
