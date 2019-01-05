@@ -2,6 +2,7 @@ package com.nastryair.project.hotelmanager.hotel.service;
 
 import com.nastryair.project.hotelmanager.hotel.common.RestMessage;
 import com.nastryair.project.hotelmanager.hotel.common.contant.CodeConstant;
+import com.nastryair.project.hotelmanager.hotel.common.exception.BusinessException;
 import com.nastryair.project.hotelmanager.hotel.entity.Hotel;
 import com.nastryair.project.hotelmanager.hotel.repository.HotelRepository;
 import com.nastryair.project.hotelmanager.hotel.util.ExceptionUtil;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.criteria.Predicate;
 import java.text.SimpleDateFormat;
@@ -22,6 +24,7 @@ import java.util.List;
 import java.util.UUID;
 
 import static com.nastryair.project.hotelmanager.hotel.common.config.HotelConf.MODULE_NAME;
+import static com.nastryair.project.hotelmanager.hotel.util.FileUploadUtil.uploadImgToPath;
 
 @Service
 public class HotelService {
@@ -92,6 +95,19 @@ public class HotelService {
             message.setCode(CodeConstant.RECORD_ALREADY_EXISTS.getCode());
         }
 
+        return message;
+    }
+
+    public RestMessage uploadFile(MultipartFile file) {
+        RestMessage message = new RestMessage();
+        String imgPath = "";
+        try {
+            imgPath = uploadImgToPath(file, "categoryImg");
+        } catch (Exception e) {
+            throw new BusinessException(CodeConstant.FAIL.getCode(), "上传失败");
+        }
+        message.setData(imgPath);
+        message.setCode(CodeConstant.SUCCESS.getCode());
         return message;
     }
 }

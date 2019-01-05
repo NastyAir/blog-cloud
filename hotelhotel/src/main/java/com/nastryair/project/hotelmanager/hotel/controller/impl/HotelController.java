@@ -8,6 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.Map;
 
 @CrossOrigin
 @RestController
@@ -49,4 +52,12 @@ public class HotelController implements HotelApi {
         return ResponseEntity.ok(restMessage);
     }
 
+    @Override
+    @RequestMapping(value = "/upload", method = RequestMethod.POST)
+    public ResponseEntity uploadFile(
+            @RequestParam(value = "file") MultipartFile file) {
+        RestMessage restMessage = hotelService.uploadFile(file);
+        return ResponseEntity.ok(restMessage);
+
+    }
 }
