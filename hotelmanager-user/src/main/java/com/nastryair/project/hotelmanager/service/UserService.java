@@ -64,6 +64,7 @@ public class UserService {
             User user = userRepository.findByName(userInfo.getName());
             if (user == null) {
                 userInfo.setUserId(UUID.randomUUID().toString());
+                userInfo.setPassword("123456");
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
                 userInfo.setCreateDate(new Date());
                 message.setData(userRepository.save(userInfo).getUserId());
@@ -384,10 +385,10 @@ public class UserService {
         byte[] data;
         String fileName;
         if (userAvatar == null) {
-            fileName = "default_avatar.png";
+            fileName = "default_avatar.jpg";
             try {
                 //读取jar包内的默认头像图片
-                ClassPathResource resource = new ClassPathResource("default_avatar.png");
+                ClassPathResource resource = new ClassPathResource("default_avatar.jpg");
                 InputStream inputStream = resource.getInputStream();
                 ByteArrayOutputStream swapStream = new ByteArrayOutputStream();
                 byte[] buff = new byte[100];

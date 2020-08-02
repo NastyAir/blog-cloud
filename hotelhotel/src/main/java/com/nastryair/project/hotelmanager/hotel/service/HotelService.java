@@ -51,14 +51,14 @@ public class HotelService {
             if (StringUtils.isNotEmpty(title)) {
                 predicates.add(criteriaBuilder.like(root.get("title"), "%" + title + "%"));
             }
-            if (StringUtils.isNotEmpty(title)) {
-                predicates.add(criteriaBuilder.like(root.get("priceRange"), priceRange));
+            if (StringUtils.isNotEmpty(priceRange)) {
+                predicates.add(criteriaBuilder.equal(root.get("priceRange"), priceRange));
             }
-            if (StringUtils.isNotEmpty(title)) {
-                predicates.add(criteriaBuilder.like(root.get("star"), star));
+            if (StringUtils.isNotEmpty(star)) {
+                predicates.add(criteriaBuilder.equal(root.get("starRated"), star));
             }
-            if (StringUtils.isNotEmpty(title)) {
-                predicates.add(criteriaBuilder.like(root.get("theme"), theme));
+            if (StringUtils.isNotEmpty(theme)) {
+                predicates.add(criteriaBuilder.equal(root.get("theme"), theme));
             }
             return criteriaBuilder.and(predicates.toArray(new Predicate[predicates.size()]));
         };
